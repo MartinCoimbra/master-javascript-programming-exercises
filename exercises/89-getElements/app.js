@@ -1,21 +1,27 @@
 // Write your function here
-function getElementsThatEqual10AtProperty(objJ,keyY){
-    var Sveces = 0;
+function getElementsLessThan100AtProperty(objJ, keyy){
+  var poss = 0;
     var newarry = [];
-
+    var vacio = false;
     for(var i = 0; i < objJ.key.length; i++){
-        if (objJ.key[i] === 10) {
-          Sveces++;
-          /* pa saber cuantos hay que agregar y cuales ya viene con la i */
-          for(var j = 0; j < Sveces; j++){
+        if (objJ.key[i] < 100) {
+          poss++;
+          vacio = false;
+          for(var j = 0; j < poss; j++){
             newarry[j] = objJ.key[i];
           }
+        }else{
+          vacio = true
         }
     }
-    return newarry;
+    if(vacio == true){
+      return newarry;  
+    }
+
+
 }
 var obj = {
-  key: [1000, 10, 50, 10]
+  key: [1000, 20, 50, 500]
 };
-var output = getElementsThatEqual10AtProperty(obj, 'key');
-console.log(output); // --> [10, 10]
+var output = getElementsLessThan100AtProperty(obj, 'key');
+console.log(output); // --> [20, 50]
